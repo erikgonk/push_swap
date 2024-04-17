@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 17:40:44 by erigonza          #+#    #+#             */
-/*   Updated: 2024/04/15 17:40:47 by erigonza         ###   ########.fr       */
+/*   Created: 2024/04/17 12:46:44 by erigonza          #+#    #+#             */
+/*   Updated: 2024/04/17 12:46:48 by erigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// int main(int argc, char **argv)
-// {
-//   t_lst   *stack_a;
-//   t_lst   *stack_b;
+void  pa(t_lst **stack_a, t_lst **stack_b)
+{
+  if (!*stack_b)
+    return ;
+  ft_lstadd_front(stack_b, *stack_a);
+}
 
-//   stack_a = NULL;
-//   stack_b = NULL;
-//   if (argc < 2)
-//     exit ((ft_fd_printf(2, "%s", ERROR_ARG) * 0) + 1);
-//   exit (0);
-// }
+void  pb(t_lst **stack_a, t_lst **stack_b)
+{
+  if (!*stack_a)
+    return ;
+  ft_lstadd_front(stack_a, *stack_b);
+}

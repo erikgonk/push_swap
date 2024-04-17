@@ -21,7 +21,7 @@ NAME = push_swap
 LIBFT = src/libft/
 LIBFT_A = $(addprefix $(LIBFT), libft.a)
 
-SRC_NAMES = main.c
+SRC_NAMES = main.c rotate.c
 
 SRCS = $(addprefix src/, $(SRC_NAMES))
 OBJS = $(SRCS:%.c=%.o)
@@ -36,16 +36,16 @@ RM = rm -fr
 
 #------------------------------------EXECUTE-----------------------------------#
 
-all: $(LIBFT_A) $(NAME)
+all: libft $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS)  -Iinc -I$(LIBFT) $(LDFLAGS) $(LIBFT_A) $(SRCS) -o $(NAME)
 
-$(OBJS): %.o: %.c Makefile
-	$(CC) $(CFLAGS) -Iinc -I$(LIBFT) -MMD -MP -c -o $@ $<
+$(OBJS): %.o: %.c Makefile $(LIBFT_A)
+	$(CC) $(CFLAGS) -Iinc -I$(LIBFT) -MMD -c -o $@ $<
 	echo -n "$(CLEAR_SCREEN)"
 
-$(LIBFT_A):
+libft:
 	make -C $(LIBFT) --no-print-directory
 
 #-------------------------------------CLEAN------------------------------------#
@@ -53,7 +53,7 @@ $(LIBFT_A):
 clean:
 	$(RM) $(OBJS) $(DEPS) --no-print-directory
 	make clean -C $(LIBFT) --no-print-directory
-	rm -fr *.dSYM --no-print-directory
+	rm -fr push_swap.dSYM --no-print-directory
 
 fclean: clean
 	$(RM) $(NAME) --no-print-directory
@@ -63,5 +63,5 @@ re: fclean all
 
 -include $(DEPS)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re libft
 .SILENT:

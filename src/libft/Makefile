@@ -6,7 +6,7 @@
 #    By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/12 11:21:29 by erigonza          #+#    #+#              #
-#    Updated: 2024/04/14 12:56:16 by erigonza         ###   ########.fr        #
+#    Updated: 2024/04/17 12:09:14 by erigonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,13 +25,11 @@ SRCS = ft_atoi.c ft_itoa.c ft_putchar.c ft_putstr.c ft_putnbr.c ft_putchar_fd.c\
 	   ft_strnstr.c ft_strncmp.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c\
 	   ft_strmapi.c ft_striteri.c\
 	   ft_printf.c ft_putchar_error.c\
-		 get_next_line.c get_next_line_utils.c
-SRCS_BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c\
-			 ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
+	   get_next_line.c get_next_line_utils.c\
+	   ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c\
+	  ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 OBJS = $(SRCS:%.c=%.o)
 DEPS = $(SRCS:%.c=%.d)
-OBJS_BONUS = $(SRCS_BONUS:%.c=%.o)
-DEPS_BONUS = $(SRCS_BONUS:%.c=%.d)
 
 CFLAGS = -Wall -Wextra -Werror -MMD -g
 
@@ -44,23 +42,20 @@ CFLAGS = -Wall -Wextra -Werror -MMD -g
 
 all: $(NAME)
 
-$(NAME): $(OBJS) 
+$(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
-
-bonus: $(OBJS) $(OBJS_BONUS) 
-	ar rcs $(NAME) $(OBJS_BONUS) $(OBJS)
 
 #-------------------------------------CLEAN------------------------------------#
 
 clean:
-	$(RM) $(OBJS) $(DEPS) $(OBJS_BONUS) $(DEPS_BONUS)
+	$(RM) $(OBJS) $(DEPS)
 
 fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
 
--include $(DEPS) $(DEPS_BONUS)
+-include $(DEPS)
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
 .SILENT:

@@ -27,4 +27,12 @@ typedef struct s_lst
   struct s_lst *next;
 }               t_lst;
 
+void    swap(t_lst  **stack);
+void    sa(t_lst  **stack_a);
+void    sb(t_lst  **stack_b);
+void    ss(t_lst  **stack_a, t_lst  **stack_b);
+
+void  pa(t_lst **stack_a, t_lst **stack_b);
+void  pb(t_lst **stack_a, t_lst **stack_b);
+
 #endif
