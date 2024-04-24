@@ -12,17 +12,18 @@
 
 #include "push_swap.h"
 
-void  swap(t_lst  **stack)
+void  swap(t_list  **stack)
 {
-  t_lst   *tmp;
+  t_list   *tmp;
 
   tmp = NULL;
   tmp = *stack;
   *stack = (*stack)->next;
+  tmp->next = (*stack)->next;
   (*stack)->next = tmp;
 }
 
-void  sa(t_lst  **stack_a)
+void  sa(t_list  **stack_a)
 {
   if (!(*stack_a || (*stack_a)->next))
     return ;
@@ -30,7 +31,7 @@ void  sa(t_lst  **stack_a)
   ft_fd_printf(1, "sa\n");
 }
 
-void  sb(t_lst  **stack_b)
+void  sb(t_list  **stack_b)
 {
   if (!(*stack_b || (*stack_b)->next))
     return ;
@@ -38,7 +39,7 @@ void  sb(t_lst  **stack_b)
   ft_fd_printf(1, "sb\n");
 }
 
-void  ss(t_lst  **stack_a, t_lst  **stack_b)
+void  ss(t_list  **stack_a, t_list  **stack_b)
 {
   swap(stack_a);
   swap(stack_b);

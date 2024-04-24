@@ -12,46 +12,15 @@
 
 #include "push_swap.h"
 
-void  rotate(t_lst *stack)
+void  rotate(t_list **stack)
 {
-  if (!stack)
+  t_list   *head;
+  t_list   *tmp;
+
+  if (ft_lstsize(*stack) < 2)
     return ;
-  t_lst   *tmp;
-
-  tmp = stack;
-  //(*stack)->next = tmp;
-  
-  while (stack->next)
-    stack = stack->next; 
-  stack->next = tmp;
-    stack = stack->next;
-  stack->next = 0;
-}
-
-void  pruebas(t_lst *lst)
-{
-
-	lst = malloc(sizeof(sizeof(int)));
-	lst->data = (13);
-	lst->next = malloc(sizeof(t_lst));
-	lst->next->data = (12);
-	lst->next->next = malloc(sizeof(t_lst));
-	lst->next->next->data = (10);
-}
-
-int main(void)
-{
-  t_lst *lst;
-  int l = 0;
-
-  lst = NULL;
-  pruebas(lst);
-  rotate(lst);
-  while (lst) 
-  {
-    l = lst->data;
-    printf("%d\n", l);
-    lst = lst->next;
-  }
-  return 0;
+  head = ft_lstlast(*stack);
+  head->next = *stack;
+  tmp = ft_lstlast(*stack);
+  tmp->next = NULL;
 }
