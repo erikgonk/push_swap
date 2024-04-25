@@ -67,8 +67,8 @@ int main(int argc, char **argv)
   if (argc < 2)
     exit ((ft_fd_printf(2, "%s", ERROR_ARG) * 0) + 1);
   create_stack(&stack_a, argv);
-  pb(&stack_a, &stack_b);
-  t_list   *tmp = stack_b;
+  t_list   *tmp = stack_a;
+  ra(&stack_a);
   int l = 0;
   while (tmp) 
   {

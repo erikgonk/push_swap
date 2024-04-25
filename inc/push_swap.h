@@ -13,26 +13,50 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft.h"
+# include "../src/libft/libft.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
 # define ERROR_ARG "Error\nYou Need To Add Arguments\n"
+# define ERROR_CHAR_NOT_VALID "Error\nCharacter Not Valid\n"
+# define ERROR_NUM_NOT_VALID "Error\nNumber Not Valid\n"
+# define ERROR_MALLOC "Error\nMalloc\n"
 
-typedef struct s_lst
+typedef struct s_list
 {
   int           data;
-  struct s_lst *next;
-}               t_lst;
-
-void    swap(t_lst  **stack);
-void    sa(t_lst  **stack_a);
-void    sb(t_lst  **stack_b);
-void    ss(t_lst  **stack_a, t_lst  **stack_b);
-
-void  pa(t_lst **stack_a, t_lst **stack_b);
-void  pb(t_lst **stack_a, t_lst **stack_b);
+  struct s_list *prev;
+  struct s_list *next;
+}               t_list;
+// main
+void  ft_num_checker(char *set);
+void  create_stack(t_list **stack_a, char **argv);
+void  ft_num_checker(char *set);
+void  ft_save_numbers(t_list **stack_a, t_list *new);
+// utils
+t_list  *ft_bottom(t_list *stack);
+t_list  *ft_new_elem(int num);
+// SWAP
+void    sa(t_list  **stack_a);
+void    sb(t_list  **stack_b);
+void    ss(t_list  **stack_a, t_list  **stack_b);
+// PUSH
+void  pa(t_list **stack_a, t_list **stack_b);
+void  pb(t_list **stack_a, t_list **stack_b);
+// ROTATE
+void  ra(t_list **stack);
+void  rb(t_list **stack);
+// LST
+t_list	*ft_lstnew(int  content);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+int		ft_lstsize(t_list *lst);
+t_list	*ft_lstlast(t_list *lst);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstdelone(t_list *lst, void (*del)(int));
+void	ft_lstclear(t_list **lst, void (*del)(int));
+void	ft_lstiter(t_list *lst, void (*f)(int));
+void	ft_lstiter(t_list *lst, void (*f)(int));
 
 #endif
