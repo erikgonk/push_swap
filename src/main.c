@@ -12,18 +12,17 @@
 
 #include "push_swap.h"
 
-void  ft_num_checker(char *set)
+t_list  *ft_new_elem(int num)
 {
-  int   i;
+  t_list    *new;
 
-  i = -1;
-  while (set[++i])
-  {
-    if (set[i] == '-' || set[i] == '+')
-      i++;
-    if (set[i] < '0' || set[i] > '9')
-      exit ((ft_fd_printf(2, "%s", ERROR_CHAR_NOT_VALID) * 0) + 1);
-  }
+  new = malloc(sizeof (t_list));
+  if (!new)
+    exit ((ft_fd_printf(2, "%s", ERROR_MALLOC) * 0) + 1);
+  new->data = num;
+  new->next = NULL;
+  new->prev = NULL;
+  return (new);
 }
 
 void  ft_save_numbers(t_list **stack_a, t_list *new)
@@ -37,7 +36,7 @@ void  ft_save_numbers(t_list **stack_a, t_list *new)
     *stack_a = new;
     return ;
   }
-  bottom = ft_bottom(*stack_a);
+  bottom = ft_lstlast(*stack_a);
   bottom->next = new;
 }
 
@@ -54,6 +53,7 @@ void  create_stack(t_list **stack_a, char **argv)
     if (num > 2147483647 || num < -2147483648)
       exit ((ft_fd_printf(2, "%s", ERROR_NUM_NOT_VALID) * 0) + 1);
     ft_save_numbers(stack_a, ft_new_elem(num));
+    ft_num_repeated(*stack_a, 0);
   }
 }
 
@@ -64,17 +64,14 @@ int main(int argc, char **argv)
 
   stack_a = NULL;
   stack_b = NULL;
-  if (argc < 2)
+  if (argc < 3)
     exit ((ft_fd_printf(2, "%s", ERROR_ARG) * 0) + 1);
   create_stack(&stack_a, argv);
-  t_list   *tmp = stack_a;
-  ra(&stack_a);
-  int l = 0;
-  while (tmp) 
+  rrr(&stack_a, &stack_b);
+  while (stack_a) 
   {
-    l = tmp->data;
-    printf("%d\n", l);
-    tmp = tmp->next;
+    printf("%d\n", stack_a->data);
+    stack_a = stack_a->next;
   }
   exit (0);
 }

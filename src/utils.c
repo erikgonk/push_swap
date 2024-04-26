@@ -12,21 +12,9 @@
 
 #include "push_swap.h"
 
-t_list  *ft_bottom(t_list *stack)
+t_list  *ft_bft_last(t_list *stack)
 {
-  while (stack->next)
+  while (stack->next->next)
     stack = stack->next;
   return (stack);
-}
-
-t_list  *ft_new_elem(int num)
-{
-  t_list    *new;
-
-  new = malloc(sizeof (t_list));
-  if (!new)
-    exit ((ft_fd_printf(2, "%s", ERROR_MALLOC) * 0) + 1);
-  new->data = num;
-  new->next = NULL;
-  return (new);
 }

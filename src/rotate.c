@@ -16,16 +16,16 @@ void  rotate(t_list **stack)
 {
   t_list   *last;
   t_list   *head;
+  t_list   *second;
 
   if (ft_lstsize(*stack) < 2)
     return ;
   head = *stack;
-  *stack = (*stack)->next;
-  last = ft_bottom(*stack);
-  // printf("%d\n", last->data);
+  second = (*stack)->next;
+  last = ft_lstlast(*stack);
   last->next = head;
   head->next = NULL;
-  // printf("%d\n", head->data);
+  *stack = second;
 }
 
 void  ra(t_list **stack)
@@ -38,4 +38,11 @@ void  rb(t_list **stack)
 {
   rotate(stack);
   ft_fd_printf(1, "rb\n");
+}
+
+void  rr(t_list **stack_a, t_list **stack_b)
+{
+  rotate(stack_a);
+  rotate(stack_b);
+  ft_fd_printf(1, "rr\n");
 }

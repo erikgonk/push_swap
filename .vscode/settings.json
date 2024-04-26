@@ -6,6 +6,8 @@
     "vector": "c",
     "stdlib.h": "c",
     "push_swap.h": "c",
-    "libft.h": "c"
+    "libft.h": "c",
+    "iterator": "c",
+    "fcntl.h": "c"
   }
 }

@@ -23,6 +23,7 @@
 # define ERROR_CHAR_NOT_VALID "Error\nCharacter Not Valid\n"
 # define ERROR_NUM_NOT_VALID "Error\nNumber Not Valid\n"
 # define ERROR_MALLOC "Error\nMalloc\n"
+# define ERROR_NUM_REPEATED "Error\nNumber Repeated\n"
 
 typedef struct s_list
 {
@@ -31,13 +32,15 @@ typedef struct s_list
   struct s_list *next;
 }               t_list;
 // main
-void  ft_num_checker(char *set);
-void  create_stack(t_list **stack_a, char **argv);
-void  ft_num_checker(char *set);
-void  ft_save_numbers(t_list **stack_a, t_list *new);
-// utils
-t_list  *ft_bottom(t_list *stack);
 t_list  *ft_new_elem(int num);
+void    ft_save_numbers(t_list **stack_a, t_list *new);
+void    create_stack(t_list **stack_a, char **argv);
+// erros
+void  ft_num_checker(char *set);
+void  ft_num_checker(char *set);
+void  ft_num_repeated(t_list *stack, int bol);
+// utils
+t_list  *ft_bft_last(t_list *stack);
 // SWAP
 void    sa(t_list  **stack_a);
 void    sb(t_list  **stack_b);
@@ -48,6 +51,11 @@ void  pb(t_list **stack_a, t_list **stack_b);
 // ROTATE
 void  ra(t_list **stack);
 void  rb(t_list **stack);
+void  rr(t_list **stack_a, t_list **stack_b);
+// REVERSE_ROTATE
+void  rra(t_list **stack);
+void  rrb(t_list **stack);
+void  rrr(t_list **stack, t_list **stack_b);
 // LST
 t_list	*ft_lstnew(int  content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
