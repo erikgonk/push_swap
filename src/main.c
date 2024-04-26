@@ -68,6 +68,8 @@ int main(int argc, char **argv)
     exit ((ft_fd_printf(2, "%s", ERROR_ARG) * 0) + 1);
   create_stack(&stack_a, argv);
   rrr(&stack_a, &stack_b);
+  rra(&stack_a);
+  rra(&stack_a);
   while (stack_a) 
   {
     printf("%d\n", stack_a->data);

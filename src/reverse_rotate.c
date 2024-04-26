@@ -23,12 +23,11 @@ void  reverse_rotate(t_list **stack)
   first = *stack;
   bfr_last = ft_bft_last(*stack);
   last = ft_lstlast(*stack);
-  first = last;
+  *stack = last;
+  (*stack)->next = first;
   bfr_last->next = NULL;
-  first->next = (*stack)->next;
-  *stack = first;
-  printf("%d\n", (*stack)->next->data);
-  printf("%d\n", (*stack)->data);
+  // printf("%d\n", (*stack)->next->data);
+  // printf("%d\n", (*stack)->data);
 }
 
 void  rra(t_list **stack)
