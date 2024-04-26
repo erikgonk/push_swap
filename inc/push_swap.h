@@ -34,13 +34,20 @@ typedef struct s_list
 // main
 t_list  *ft_new_elem(int num);
 void    ft_save_numbers(t_list **stack_a, t_list *new);
-void    create_stack(t_list **stack_a, char **argv);
+int    create_stack(t_list **stack_a, char **argv);
 // erros
 void  ft_num_checker(char *set);
 void  ft_num_checker(char *set);
 void  ft_num_repeated(t_list *stack, int bol);
 // utils
 t_list  *ft_bft_last(t_list *stack);
+// Order
+int       sort_checker(t_list *stack);
+
+// Sorting
+void  ft_elems(int elements, t_list **stack_a);
+// void  three_elems(t_list **stack_a);
+// void  ft_big_sort(t_list **stack_a);
 // SWAP
 void    sa(t_list  **stack_a);
 void    sb(t_list  **stack_b);

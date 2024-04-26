@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   fast_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 16:17:45 by erigonza          #+#    #+#             */
-/*   Updated: 2024/04/24 16:35:58 by erigonza         ###   ########.fr       */
+/*   Created: 2024/04/26 18:21:18 by erigonza          #+#    #+#             */
+/*   Updated: 2024/04/26 18:21:19 by erigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list  *ft_bft_last(t_list *stack)
+void  ft_elems(int elements, t_list **stack_a)
 {
-  t_list    *tmp;
-
-  while (stack->next)
+  if (elements == 2)
   {
-    tmp = stack;
-    stack = stack->next;
-    if (!stack->next)
-      return (tmp);
+    if ((*stack_a)->data > (*stack_a)->next->data)
+      sa(stack_a);
+    return ;
   }
-  return (NULL);
+  // else if (elements == 3)
+  //   three_elems(stack_a);
+  // else
+  //   ft_big_sort(stack_a);
 }
+
+// void  three_elems(t_list **stack_a);
+
+// void  ft_big_sort(t_list **stack_a);

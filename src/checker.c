@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_checker.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 16:17:45 by erigonza          #+#    #+#             */
-/*   Updated: 2024/04/24 16:35:58 by erigonza         ###   ########.fr       */
+/*   Created: 2024/04/26 17:46:04 by erigonza          #+#    #+#             */
+/*   Updated: 2024/04/26 17:46:06 by erigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list  *ft_bft_last(t_list *stack)
+int sort_checker(t_list *stack)
 {
-  t_list    *tmp;
-
+  t_list  *tmp;
+  if (!stack->next)
+    return (-1);
+  tmp = stack->next;
   while (stack->next)
   {
-    tmp = stack;
+    if (stack->data > tmp->data)
+        return (0);
+    tmp = tmp->next;
     stack = stack->next;
-    if (!stack->next)
-      return (tmp);
   }
-  return (NULL);
+  return (1);
 }
