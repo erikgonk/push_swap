@@ -25,3 +25,60 @@ t_list  *ft_bft_last(t_list *stack)
   }
   return (NULL);
 }
+
+int sort_checker(t_list *stack)
+{
+  t_list  *tmp;
+  if (!stack->next)
+    return (-1);
+  tmp = stack->next;
+  while (stack->next)
+  {
+    if (stack->data > tmp->data)
+        return (0);
+    tmp = tmp->next;
+    stack = stack->next;
+  }
+  return (1);
+}
+
+void  asign_index(t_list *s)
+{
+  t_list    *tmp;
+  t_list    *tmp2;
+
+  tmp = s;
+  while (tmp)
+  {
+    tmp2 = s;
+    while (tmp2)
+    {
+      if (tmp2->data <= tmp->data)
+        tmp->index++;
+      tmp2 = tmp2->next;
+    }
+    tmp = tmp->next;
+  }
+}
+
+int find_small_index(t_list **s)
+{
+  t_list  *tmp;
+  t_list  *tmp2;
+
+  tmp = *s;
+  while (tmp->index)
+  {
+    tmp2 = *s;
+    while (tmp2)
+    {
+      if (tmp->index > tmp2->index)
+        break ;
+      tmp2 = tmp2->next;
+    }
+    if (tmp->pos == ft_lstsize(*s))
+      return (tmp->index);
+    tmp = tmp->next;
+  }
+  return (tmp->index);
+}

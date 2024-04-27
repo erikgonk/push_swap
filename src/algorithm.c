@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checker.c                                       :+:      :+:    :+:   */
+/*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/26 17:46:04 by erigonza          #+#    #+#             */
-/*   Updated: 2024/04/26 17:46:06 by erigonza         ###   ########.fr       */
+/*   Created: 2024/04/27 19:18:57 by erigonza          #+#    #+#             */
+/*   Updated: 2024/04/27 19:18:59 by erigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int sort_checker(t_list *stack)
+void  ft_big_sort(t_list **stack_a, t_list **stack_b)
 {
-  t_list  *tmp;
-  if (!stack->next)
-    return (-1);
-  tmp = stack->next;
-  while (stack->next)
-  {
-    if (stack->data > tmp->data)
-        return (0);
-    tmp = tmp->next;
-    stack = stack->next;
-  }
-  return (1);
+  (void)stack_a;
+  (void)stack_b;
 }

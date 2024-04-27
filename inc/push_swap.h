@@ -28,26 +28,31 @@
 typedef struct s_list
 {
   int           data;
+  int           pos;
+  int           index;
   struct s_list *prev;
   struct s_list *next;
 }               t_list;
 // main
 t_list  *ft_new_elem(int num);
 void    ft_save_numbers(t_list **stack_a, t_list *new);
-int    create_stack(t_list **stack_a, char **argv);
+int     create_stack(t_list **stack_a, char **argv);
 // erros
 void  ft_num_checker(char *set);
 void  ft_num_checker(char *set);
 void  ft_num_repeated(t_list *stack, int bol);
 // utils
 t_list  *ft_bft_last(t_list *stack);
-// Order
-int       sort_checker(t_list *stack);
-
+int     sort_checker(t_list *stack);
+void    asign_index(t_list *s);
+int     find_small_index(t_list **s);
 // Sorting
-void  ft_elems(int elements, t_list **stack_a);
-// void  three_elems(t_list **stack_a);
-// void  ft_big_sort(t_list **stack_a);
+void  ft_elems(int elements, t_list **stack_a, t_list **stack_b);
+void  three_elems(t_list **s);
+void  four_elems(t_list **stack_a, t_list **stack_b);
+void  five_elems(t_list **stack_a, t_list **stack_b);
+// Algorithn
+void  ft_big_sort(t_list **stack_a, t_list **stack_b);
 // SWAP
 void    sa(t_list  **stack_a);
 void    sb(t_list  **stack_b);

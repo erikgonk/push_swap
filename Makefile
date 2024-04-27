@@ -21,7 +21,7 @@ NAME = push_swap
 LIBFT = src/libft/
 LIBFT_A = $(addprefix $(LIBFT), libft.a)
 
-SRC_NAMES = main.c errors.c utils.c checker.c fast_sort.c \
+SRC_NAMES = main.c errors.c utils.c fast_sort.c algorithm.c \
 			swap.c push.c rotate.c reverse_rotate.c \
 			lst_utils1.c lst_utils2.c
 SRCS = $(addprefix src/, $(SRC_NAMES))
