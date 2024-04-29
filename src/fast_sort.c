@@ -34,9 +34,9 @@ void  ft_elems(int elements, t_list **stack_a, t_list **stack_b)
     ft_big_sort(stack_a, stack_b);
 }
 
-void  three_elems(t_list **s)
+t_list  **three_elems(t_list **s)
 {
-  if (!sort_checker(*s))
+  while (!sort_checker(*s))
   {
 		if ((*s)->data < (*s)->next->data)
 			rra(s);
@@ -45,65 +45,57 @@ void  three_elems(t_list **s)
 		if (!sort_checker(*s))
 			sa(s);
   }
+  return (s);
 }
 
-void  four_elems(t_list **stack_a, t_list **stack_b)
+t_list  **four_elems(t_list **stack_a, t_list **stack_b)
 {
   int       i;
+  t_list    *tmp;
 
   i = find_small_index(stack_a);
-  if ((*stack_a)->next->next->next->index == i)
+  *stack_a = new_pos(stack_a);
+  tmp = *stack_a;
+  while (tmp && (*stack_a)->index != i)
   {
-    rra(stack_a);
-    pa(stack_a, stack_b);
+    if (tmp->index == i && tmp->pos < (ft_lstsize(*stack_a) / 2))
+      ra(stack_a);
+    else if (tmp->index == i && tmp->pos >= (ft_lstsize(*stack_a) / 2))
+      rra(stack_a);
+    tmp = tmp->next;
+    if (!tmp)
+      tmp = *stack_a;
   }
-  else if ((*stack_a)->index == i)
-    pa(stack_a, stack_b);
-  else if ((*stack_a)->next->index == i)
-  {
-    ra(stack_a);
-    pa(stack_a, stack_b);
-  }
-  else if ((*stack_a)->next->next->index == i)
-  {
-    rra(stack_a);
-    rra(stack_a);
-    pa(stack_a, stack_b);
-  }
-  three_elems(stack_a);
+  if (sort_checker(*stack_a))
+    return (stack_a);
+  pa(stack_a, stack_b);
+  stack_a = three_elems(stack_a);
   pb(stack_b, stack_a);
+  return (stack_a);
 }
 
-void  five_elems(t_list **stack_a, t_list **stack_b)
+t_list  **five_elems(t_list **stack_a, t_list **stack_b)
 {
-  // quda corregir esto 
   int       i;
+  t_list    *tmp;
 
   i = find_small_index(stack_a);
-  if ((*stack_a)->index == i)
-    pa(stack_a, stack_b);
-  else if ((*stack_a)->next->index == i)
+  *stack_a = new_pos(stack_a);
+  tmp = *stack_a;
+  while (tmp && (*stack_a)->index != i)
   {
-    ra(stack_a);
-    pa(stack_a, stack_b);
+    if (tmp->index == i && tmp->pos < (ft_lstsize(*stack_a) / 2))
+      ra(stack_a);
+    else if (tmp->index == i && tmp->pos >= (ft_lstsize(*stack_a) / 2))
+      rra(stack_a);
+    tmp = tmp->next;
+    if (!tmp)
+      tmp = *stack_a;
   }
-  else if ((*stack_a)->next->next->index == i)
-  {
-    ra(stack_a);
-    ra(stack_a);
-    pa(stack_a, stack_b);
-  }
-  else if ((*stack_a)->next->next->next->index == i)
-  {
-    rra(stack_a);
-    rra(stack_a);
-    pa(stack_a, stack_b);
-  }
-  else if ((*stack_a)->next->next->next->next->index == i)
-  {
-    rra(stack_a);
-    pa(stack_a, stack_b);
-  }
-  four_elems(stack_a, stack_b);
+  if (sort_checker(*stack_a))
+    return (stack_a);
+  pa(stack_a, stack_b);
+  stack_a = four_elems(stack_a, stack_b);
   pb(stack_b, stack_a);
+  return (stack_a);
 }

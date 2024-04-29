@@ -19,7 +19,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define ERROR_ARG "Error\nYou Need To Add Arguments\n"
+# define ERROR_ARG "\n"
 # define ERROR_CHAR_NOT_VALID "Error\nCharacter Not Valid\n"
 # define ERROR_NUM_NOT_VALID "Error\nNumber Not Valid\n"
 # define ERROR_MALLOC "Error\nMalloc\n"
@@ -46,13 +46,16 @@ t_list  *ft_bft_last(t_list *stack);
 int     sort_checker(t_list *stack);
 void    asign_index(t_list *s);
 int     find_small_index(t_list **s);
+t_list  *new_pos(t_list **stack_a);
 // Sorting
 void  ft_elems(int elements, t_list **stack_a, t_list **stack_b);
-void  three_elems(t_list **s);
-void  four_elems(t_list **stack_a, t_list **stack_b);
-void  five_elems(t_list **stack_a, t_list **stack_b);
+t_list  **three_elems(t_list **s);
+t_list  **four_elems(t_list **stack_a, t_list **stack_b);
+t_list  **five_elems(t_list **stack_a, t_list **stack_b);
 // Algorithn
 void  ft_big_sort(t_list **stack_a, t_list **stack_b);
+// Algorithn Utils
+int   which_big_sort(t_list **s);
 // SWAP
 void    sa(t_list  **stack_a);
 void    sb(t_list  **stack_b);

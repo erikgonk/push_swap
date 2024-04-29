@@ -67,7 +67,7 @@ int find_small_index(t_list **s)
   t_list  *tmp2;
 
   tmp = *s;
-  while (tmp->index)
+  while (tmp)
   {
     tmp2 = *s;
     while (tmp2)
@@ -76,9 +76,25 @@ int find_small_index(t_list **s)
         break ;
       tmp2 = tmp2->next;
     }
-    if (tmp->pos == ft_lstsize(*s))
+    if (!tmp2)
       return (tmp->index);
     tmp = tmp->next;
   }
   return (tmp->index);
+}
+
+t_list  *new_pos(t_list **stack_a)
+{
+  t_list    *tmp;
+  int       i;
+
+  tmp = *stack_a;
+  i = -1;
+  while (tmp)
+  {
+    tmp->pos = ++i;
+    tmp = tmp->next;
+  }
+  tmp = *stack_a;
+  return (tmp);
 }

@@ -6,7 +6,7 @@
 #    By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/12 11:21:29 by erigonza          #+#    #+#              #
-#    Updated: 2024/04/15 18:21:37 by erigonza         ###   ########.fr        #
+#    Updated: 2024/04/29 14:27:20 by erigonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ NAME = push_swap
 LIBFT = src/libft/
 LIBFT_A = $(addprefix $(LIBFT), libft.a)
 
-SRC_NAMES = main.c errors.c utils.c fast_sort.c algorithm.c \
+SRC_NAMES = main.c errors.c utils.c fast_sort.c algorithm.c utils_algorithm.c\
 			swap.c push.c rotate.c reverse_rotate.c \
 			lst_utils1.c lst_utils2.c
 SRCS = $(addprefix src/, $(SRC_NAMES))

@@ -80,8 +80,6 @@ int main(int argc, char **argv)
   if (argc < 3)
     exit ((ft_fd_printf(2, "%s", ERROR_ARG) * 0) + 1);
   elems = create_stack(&stack_a, argv);
-  // if (sort_checker(stack_a))
-  //   exit ((ft_fd_printf(2, "NOTHING TO BE DONE") * 0));
   ft_elems(elems, &stack_a, &stack_b);
   while (stack_a) 
   {
