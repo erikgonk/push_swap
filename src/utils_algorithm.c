@@ -24,6 +24,6 @@ int   which_big_sort(t_list **s)
   else if (i <= 300)
     return (5);
   else if (i > 300)
-    return (6);
-  return (NULL);
+    return (7);
+  return (0);
 }

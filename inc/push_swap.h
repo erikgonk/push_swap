@@ -30,7 +30,7 @@ typedef struct s_list
   int           data;
   int           pos;
   int           index;
-  struct s_list *prev;
+  int           cost;
   struct s_list *next;
 }               t_list;
 // main
@@ -53,7 +53,7 @@ t_list  **three_elems(t_list **s);
 t_list  **four_elems(t_list **stack_a, t_list **stack_b);
 t_list  **five_elems(t_list **stack_a, t_list **stack_b);
 // Algorithn
-void  ft_big_sort(t_list **stack_a, t_list **stack_b);
+void  ft_big_sort(t_list **s, t_list **stack_b);
 // Algorithn Utils
 int   which_big_sort(t_list **s);
 // SWAP
@@ -73,13 +73,13 @@ void  rrb(t_list **stack);
 void  rrr(t_list **stack, t_list **stack_b);
 // LST
 t_list	*ft_lstnew(int  content);
-void	ft_lstadd_front(t_list **lst, t_list *new);
-int		ft_lstsize(t_list *lst);
+void	  ft_lstadd_front(t_list **lst, t_list *new);
+int		  ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstdelone(t_list *lst, void (*del)(int));
-void	ft_lstclear(t_list **lst, void (*del)(int));
-void	ft_lstiter(t_list *lst, void (*f)(int));
-void	ft_lstiter(t_list *lst, void (*f)(int));
+void	  ft_lstadd_back(t_list **lst, t_list *new);
+void	  ft_lstdelone(t_list *lst, void (*del)(int));
+void	  ft_lstclear(t_list **lst, void (*del)(int));
+void	  ft_lstiter(t_list *lst, void (*f)(int));
+void	  ft_lstiter(t_list *lst, void (*f)(int));
 
 #endif

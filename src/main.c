@@ -21,7 +21,6 @@ t_list  *ft_new_elem(int num)
     exit ((ft_fd_printf(2, "%s", ERROR_MALLOC) * 0) + 1);
   new->data = num;
   new->next = NULL;
-  new->prev = NULL;
   return (new);
 }
 
@@ -35,6 +34,7 @@ void  ft_save_numbers(t_list **stack_a, t_list *new)
   if (!new)
     return ;
   new->index = -1;
+  new->cost = -50;
   new->pos = ++i;
   if (!*stack_a)
   {
