@@ -31,7 +31,7 @@ void  ft_elems(int elements, t_list **stack_a, t_list **stack_b)
   else if (elements == 5)
     five_elems(stack_a, stack_b);
   else
-    ft_big_sort(stack_a, stack_b);
+    ft_big_sort(stack_a, stack_b, 0);
 }
 
 t_list  **three_elems(t_list **s)

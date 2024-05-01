@@ -89,6 +89,8 @@ t_list  *new_pos(t_list **stack_a)
   int       i;
 
   tmp = *stack_a;
+  if (!tmp)
+    return (NULL);
   i = -1;
   while (tmp)
   {

@@ -81,10 +81,20 @@ int main(int argc, char **argv)
     exit ((ft_fd_printf(2, "%s", ERROR_ARG) * 0) + 1);
   elems = create_stack(&stack_a, argv);
   ft_elems(elems, &stack_a, &stack_b);
-  while (stack_a) 
-  {
-    printf("num -> %d ---> index %d\n", stack_a->data, stack_a->index);
-    stack_a = stack_a->next;
-  }
+  if (sort_checker(stack_a))
+    exit (printf("Todo ordenado") * 0);
   exit (0);
 }
+
+  // printf("\nSTACKS:\na\n");
+  // while (stack_a) 
+  // {
+  //   printf("num -> %d ---> index %d\n", stack_a->data, stack_a->index);
+  //   stack_a = stack_a->next;
+  // }
+  // printf("b\n");
+  // while (stack_b) 
+  // {
+  //   printf("num -> %d ---> index %d ---> pos %d\n", stack_b->data, stack_b->index, stack_b->cost);
+  //   stack_b = stack_b->next;
+  // }

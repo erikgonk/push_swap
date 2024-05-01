@@ -27,3 +27,26 @@ int   which_big_sort(t_list **s)
     return (7);
   return (0);
 }
+
+int give_check(t_list **s)
+{
+  t_list    *tmp;
+  int       check;
+
+  tmp = *s;
+  check = tmp->data;
+  return (check);
+}
+
+t_list  **reset_cost(t_list **s)
+{
+  t_list    *tmp;
+
+  tmp = *s;
+  while (tmp)
+  {
+    tmp->cost = -50;
+    tmp = tmp->next;
+  }
+  return (s);
+}

@@ -53,16 +53,22 @@ t_list  **three_elems(t_list **s);
 t_list  **four_elems(t_list **stack_a, t_list **stack_b);
 t_list  **five_elems(t_list **stack_a, t_list **stack_b);
 // Algorithn
-void  ft_big_sort(t_list **s, t_list **stack_b);
+t_list  *find_small_index_node(t_list **s, int bol);
+t_list  **give_cheap_moves(t_list **s, int i);
+t_list  *find_cheapest_move(t_list **s, int i);
+t_list  **move_to_b(t_list *move, t_list **s, int i);
+void  ft_big_sort(t_list **s, t_list **stack_b, int bol);
 // Algorithn Utils
 int   which_big_sort(t_list **s);
+t_list  **reset_cost(t_list **s);
+int give_check(t_list **s);
 // SWAP
 void    sa(t_list  **stack_a);
 void    sb(t_list  **stack_b);
 void    ss(t_list  **stack_a, t_list  **stack_b);
 // PUSH
 void  pa(t_list **stack_a, t_list **stack_b);
-void  pb(t_list **stack_a, t_list **stack_b);
+void  pb(t_list **stack_b, t_list **stack_a);
 // ROTATE
 void  ra(t_list **stack);
 void  rb(t_list **stack);
@@ -81,5 +87,9 @@ void	  ft_lstdelone(t_list *lst, void (*del)(int));
 void	  ft_lstclear(t_list **lst, void (*del)(int));
 void	  ft_lstiter(t_list *lst, void (*f)(int));
 void	  ft_lstiter(t_list *lst, void (*f)(int));
+
+
+// PARA COMENTAR
+void printlist(t_list **stack_a, t_list **stack_b, int z);
 
 #endif
