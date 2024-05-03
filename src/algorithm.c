@@ -77,18 +77,41 @@ t_list  **give_cheap_moves(t_list **s, int i)
   return (s);
 }
 
+t_list  *and_the_cheapest_is(t_list *t, t_list *res, t_list **s)
+{
+  t_list    *tmp;
+  int       size;
+
+  tmp = t;
+  size = ft_lstsize(*s) / 2;
+  if (!res)
+    return (tmp);
+  else if (size <= tmp->pos)
+    tmp->last_cost = size - tmp->pos; 
+  else if (size > tmp->pos)
+    tmp->last_cost = size - (tmp->pos / 2); 
+  if (res->last_cost <= tmp->last_cost)
+    return (res);
+  else if (res->last_cost > tmp->last_cost)
+    return (tmp);
+  return (res);
+}
+
 t_list  *find_cheapest_move(t_list **s, int i)
 {
   t_list    *tmp;
+  t_list    *res;
 
+  (void)i;
   tmp = *s;
+  res = NULL;
   while (tmp)
   {
-    if (tmp->cost == i)
-      return (tmp);
+    if (tmp->cost >= 0)
+      res = and_the_cheapest_is(tmp, res, s);
     tmp = tmp->next;
   }
-  return (tmp);
+  return (res);
 }
 
 t_list  **move_to_b(t_list *move, t_list **s, int i)
@@ -152,7 +175,6 @@ void  from_b_to_a(t_list **stack_a, t_list **stack_b, int i)
     else if ((*stack_b)->next && (*stack_b)->data < (*stack_b)->next->data)
       sb(stack_b);
     pa(stack_b, stack_a);
-    // printf("sube a stack_a ---------------->>>>>>>>>> %d\n", (*stack_a)->data);
   }
 }
 
@@ -173,10 +195,18 @@ void  ft_big_sort(t_list **stack_a, t_list **stack_b, int bol)
     give_cheap_moves(stack_a, i);
     while (tmp && ++j < i)
     {
+      // if (ft_lstsize(*stack_a) == 5)
+      // {
+      //   five_elems(stack_a, stack_b);
+      //   break ;
+      // }
       pb(move_to_b(find_cheapest_move(stack_a, j), stack_a, i), stack_b);
-      if ((*stack_b)->cost > (i/2))
+      if ((*stack_b)->cost > (i / 2))
         rb(stack_b);
+      // printf("\npasa a b ---------------> %d pos -> %d\n", (*stack_b)->data, (*stack_b)->cost);
+      // usleep(500000);
     }
+    printf("\n");
     if (j == i)
     {
       ft_big_sort(stack_a, stack_b, i);
@@ -185,4 +215,5 @@ void  ft_big_sort(t_list **stack_a, t_list **stack_b, int bol)
     tmp = tmp->next;
   }
   from_b_to_a(stack_a, stack_b, i);
+  new_pos(stack_a);
 }

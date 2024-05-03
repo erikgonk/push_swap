@@ -33,6 +33,7 @@ void  ft_save_numbers(t_list **stack_a, t_list *new)
     i = 0;
   if (!new)
     return ;
+  new->last_cost = -50;
   new->index = -1;
   new->cost = -50;
   new->pos = ++i;
@@ -81,17 +82,20 @@ int main(int argc, char **argv)
     exit ((ft_fd_printf(2, "%s", ERROR_ARG) * 0) + 1);
   elems = create_stack(&stack_a, argv);
   ft_elems(elems, &stack_a, &stack_b);
+  printf("\nSTACKS:\na\n");
+  t_list  *tmp = stack_a;
+  while (tmp) 
+  {
+    printf("num -> %d ---> index %d\n", tmp->data, tmp->index);
+    if (!tmp->next)
+      break ;
+    tmp = tmp->next;
+  }
   if (sort_checker(stack_a))
     exit (printf("Todo ordenado") * 0);
   exit (0);
 }
 
-  // printf("\nSTACKS:\na\n");
-  // while (stack_a) 
-  // {
-  //   printf("num -> %d ---> index %d\n", stack_a->data, stack_a->index);
-  //   stack_a = stack_a->next;
-  // }
   // printf("b\n");
   // while (stack_b) 
   // {

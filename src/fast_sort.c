@@ -84,9 +84,9 @@ t_list  **five_elems(t_list **stack_a, t_list **stack_b)
   tmp = *stack_a;
   while (tmp && (*stack_a)->index != i)
   {
-    if (tmp->index == i && tmp->pos < (ft_lstsize(*stack_a) / 2))
+    if (tmp->index == i && tmp->pos <= (ft_lstsize(*stack_a) / 2))
       ra(stack_a);
-    else if (tmp->index == i && tmp->pos >= (ft_lstsize(*stack_a) / 2))
+    else if (tmp->index == i && tmp->pos > (ft_lstsize(*stack_a) / 2))
       rra(stack_a);
     tmp = tmp->next;
     if (!tmp)

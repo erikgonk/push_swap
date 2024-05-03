@@ -31,6 +31,7 @@ typedef struct s_list
   int           pos;
   int           index;
   int           cost;
+  int           last_cost;
   struct s_list *next;
 }               t_list;
 // main
