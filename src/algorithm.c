@@ -73,7 +73,10 @@ t_list  **give_cheap_moves(t_list **s, int i)
     if (!tmp)
       break ;
     tmp->cost = ++k;
+
   }
+  if (i == 0)
+    exit (printf("ha petao\n"));
   return (s);
 }
 
@@ -162,19 +165,57 @@ void  from_b_to_a(t_list **stack_a, t_list **stack_b, int i)
 {
   t_list  *tmp;
 
+  (void)i;
   tmp = *stack_b;
-  asign_index(tmp);
-  new_pos(stack_b);
-  while (stack_b)
+  while (*stack_b)
   {
-    if (!*stack_b)
+    if (ft_lstsize(*stack_b) <= 1)
+    {
+      pa(stack_b, stack_a);
       return ;
+    }
+    new_pos(stack_b);
     tmp = find_big_index_node(stack_b);
-    if (tmp->cost > (i/2))
-      rrb(stack_b);
-    else if ((*stack_b)->next && (*stack_b)->data < (*stack_b)->next->data)
-      sb(stack_b);
+    while (tmp->pos > 0)
+    {
+      if (tmp->pos <= (ft_lstsize(*stack_b) / 2) && (*stack_b)->next->data == tmp->data)
+        sb(stack_b);
+      else if (tmp->pos <= (ft_lstsize(*stack_b) / 2))
+        rb(stack_b);
+      else if (tmp->pos > (ft_lstsize(*stack_b) / 2))
+        rrb(stack_b);
+      new_pos(stack_b);
+    }
     pa(stack_b, stack_a);
+  }
+  sleep (1);
+}
+
+
+void  take_rest(t_list **s, t_list **s_b, int i)
+{
+  t_list    *tmp;
+  t_list    *tmp2;
+
+  tmp = *s;
+  if (i == 3 && ft_lstsize(tmp) == 2 && tmp->data > tmp->next->data)
+      sa(s);
+  else if (i == 5 && ft_lstsize(tmp) == 4)
+    four_elems(s, s_b);
+  else if (i == 7 && ft_lstsize(tmp) == 6)
+  {
+    new_pos(s);
+    tmp2 = find_small_index_node(s, 0);
+    while (tmp2->pos != 0)
+    {
+      if (tmp2->pos <= (ft_lstsize(tmp) / 2))
+        ra(s);
+      else if (tmp2->pos > (ft_lstsize(tmp) / 2))
+        rra(s);
+    }
+    pa(s_b, s);
+    five_elems(s, s_b);
+    pb(s_b, s);
   }
 }
 
@@ -192,28 +233,17 @@ void  ft_big_sort(t_list **stack_a, t_list **stack_b, int bol)
   while (tmp)
   {
     j = -1;
+    take_rest(stack_a, stack_b, i);
     give_cheap_moves(stack_a, i);
     while (tmp && ++j < i)
     {
-      // if (ft_lstsize(*stack_a) == 5)
-      // {
-      //   five_elems(stack_a, stack_b);
-      //   break ;
-      // }
       pb(move_to_b(find_cheapest_move(stack_a, j), stack_a, i), stack_b);
       if ((*stack_b)->cost > (i / 2))
         rb(stack_b);
-      // printf("\npasa a b ---------------> %d pos -> %d\n", (*stack_b)->data, (*stack_b)->cost);
-      // usleep(500000);
     }
-    printf("\n");
     if (j == i)
-    {
-      ft_big_sort(stack_a, stack_b, i);
-      return ;
-    }
+      return (ft_big_sort(stack_a, stack_b, i));
     tmp = tmp->next;
   }
   from_b_to_a(stack_a, stack_b, i);
-  new_pos(stack_a);
 }

@@ -8,6 +8,7 @@
     "push_swap.h": "c",
     "libft.h": "c",
     "iterator": "c",
-    "fcntl.h": "c"
+    "fcntl.h": "c",
+    "random": "c"
   }
 }

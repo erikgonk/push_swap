@@ -82,17 +82,17 @@ int main(int argc, char **argv)
     exit ((ft_fd_printf(2, "%s", ERROR_ARG) * 0) + 1);
   elems = create_stack(&stack_a, argv);
   ft_elems(elems, &stack_a, &stack_b);
-  printf("\nSTACKS:\na\n");
-  t_list  *tmp = stack_a;
-  while (tmp) 
-  {
-    printf("num -> %d ---> index %d\n", tmp->data, tmp->index);
-    if (!tmp->next)
-      break ;
-    tmp = tmp->next;
-  }
-  if (sort_checker(stack_a))
-    exit (printf("Todo ordenado") * 0);
+  // printf("\nSTACKS:\na\n");
+  // t_list  *tmp = stack_a;
+  // while (tmp) 
+  // {
+  //   printf("num -> %d | ---> index %d | cost ----> %d\n", tmp->data, tmp->index, tmp->cost);
+  //   if (!tmp->next)
+  //     break ;
+  //   tmp = tmp->next;
+  // }
+  // if (sort_checker(stack_a))
+  //   exit (printf("Todo ordenado") * 0);
   exit (0);
 }
 
