@@ -1,14 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_algorithm.c                                  :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/06 13:20:59 by erigonza          #+#    #+#             */
-/*   Updated: 2024/05/06 13:21:00 by erigonza         ###   ########.fr       */
+/*   Created: 2024/01/09 16:10:12 by erigonza          #+#    #+#             */
+/*   Updated: 2024/04/14 15:02:05 by erigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
+size_t	ft_strlen(const char *s)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}

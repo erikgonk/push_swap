@@ -1,14 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_algorithm.c                                  :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/06 13:20:59 by erigonza          #+#    #+#             */
-/*   Updated: 2024/05/06 13:21:00 by erigonza         ###   ########.fr       */
+/*   Created: 2024/01/09 16:08:15 by erigonza          #+#    #+#             */
+/*   Updated: 2024/01/11 14:38:08 by erigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
+void	ft_putnbr_fd(int n, int fd)
+{
+	long long int	i;
+
+	i = n;
+	if (i < 0)
+	{
+		i = -i;
+		ft_putchar_fd('-', fd);
+	}
+	if (i > 9)
+	{
+		ft_putnbr_fd(i / 10, fd);
+		ft_putchar_fd((i % 10) + '0', fd);
+	}
+	else
+		ft_putchar_fd(i + '0', fd);
+}
+/*
+int	main(void)
+{
+	long int		n = -2147483648;
+	ft_putnbr_fd(n, 1);
+	ft_putchar_fd('\n', 1);
+	return 0;
+}*/

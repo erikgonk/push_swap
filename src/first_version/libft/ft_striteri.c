@@ -1,14 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_algorithm.c                                  :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/06 13:20:59 by erigonza          #+#    #+#             */
-/*   Updated: 2024/05/06 13:21:00 by erigonza         ###   ########.fr       */
+/*   Created: 2024/01/10 12:06:04 by erigonza          #+#    #+#             */
+/*   Updated: 2024/01/10 12:18:50 by erigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+{
+	unsigned int		i;
+
+	if (!s || !(*s) || !f)
+		return ;
+	i = 0;
+	while (s[i])
+	{
+		f(i, &s[i]);
+		i++;
+	}
+}

@@ -25,12 +25,21 @@
 # define ERROR_MALLOC "Error\nMalloc\n"
 # define ERROR_NUM_REPEATED "Error\nNumber Repeated\n"
 
+# define UP 0
+# define DOWN 1
+# define BOTH 2
+# define TOP 3
+
 typedef struct s_list
 {
   int           data;
   int           pos;
   int           index;
+  int           dir;
+  int           target;
+  int           bol;
   int           cost;
+  int           median;
   int           last_cost;
   struct s_list *next;
 }               t_list;
@@ -58,7 +67,7 @@ t_list  *find_small_index_node(t_list **s, int bol);
 t_list  **give_cheap_moves(t_list **s, int i);
 t_list  *find_cheapest_move(t_list **s, int i);
 t_list  **move_to_b(t_list *move, t_list **s, int i);
-void  ft_big_sort(t_list **s, t_list **stack_b, int bol);
+void    ft_big_sort(t_list **s, t_list **stack_b);
 // Algorithn Utils
 int   which_big_sort(t_list **s);
 t_list  **reset_cost(t_list **s);
