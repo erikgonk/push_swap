@@ -62,16 +62,28 @@ void  ft_elems(int elements, t_list **stack_a, t_list **stack_b);
 t_list  **three_elems(t_list **s);
 t_list  **four_elems(t_list **stack_a, t_list **stack_b);
 t_list  **five_elems(t_list **stack_a, t_list **stack_b);
-// Algorithn
-t_list  *find_small_index_node(t_list **s, int bol);
-t_list  **give_cheap_moves(t_list **s, int i);
-t_list  *find_cheapest_move(t_list **s, int i);
-t_list  **move_to_b(t_list *move, t_list **s, int i);
+// Algorithm
+void    asign_smallest_median(t_list **s);
+void    bring_a_up(t_list **stack_a, t_list **stack_b, t_list *a, t_list *b);
+void    push_to_a(t_list **stack_a, t_list **stack_b);
+void    finish_it(t_list **s);
 void    ft_big_sort(t_list **s, t_list **stack_b);
-// Algorithn Utils
-int   which_big_sort(t_list **s);
+// Algorithm Utils
+t_list  *find_cheapest(t_list **s);
+int     find_smallest_num(t_list **s);
+int     find_media(t_list **s);
+int     no_bigger(t_list **stack_a, t_list *stack_b);
+t_list  *find_data(t_list **s, int data);
+//Target, Cost & Direction UTILS
+void    give_dir_b(t_list *b);
+void    give_dir(t_list **stack_a, t_list **stack_b);
+t_list  *find_smallest_node(t_list **s);
+// Target, Cost & Direction
 t_list  **reset_cost(t_list **s);
-int give_check(t_list **s);
+void    give_extra_cost(t_list **stack_a, t_list **stack_b);
+void    give_cost(t_list **s, int top);
+void    target_while(t_list *a, t_list *b, t_list **stack_a);
+void    target_and_costdir_b(t_list **stack_a, t_list **stack_b);
 // SWAP
 void    sa(t_list  **stack_a);
 void    sb(t_list  **stack_b);

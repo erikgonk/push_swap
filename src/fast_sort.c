@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 void  ft_elems(int elements, t_list **stack_a, t_list **stack_b)
 {
@@ -26,10 +26,6 @@ void  ft_elems(int elements, t_list **stack_a, t_list **stack_b)
   }
   else if (elements == 3)
     three_elems(stack_a);
-  else if (elements == 4)
-    four_elems(stack_a, stack_b);
-  else if (elements == 5)
-    five_elems(stack_a, stack_b);
   else
     ft_big_sort(stack_a, stack_b);
 }
@@ -46,56 +42,4 @@ t_list  **three_elems(t_list **s)
 			sa(s);
   }
   return (s);
-}
-
-t_list  **four_elems(t_list **stack_a, t_list **stack_b)
-{
-  int       i;
-  t_list    *tmp;
-
-  i = find_small_index(stack_a);
-  *stack_a = new_pos(stack_a);
-  tmp = *stack_a;
-  while (tmp && (*stack_a)->index != i)
-  {
-    if (tmp->index == i && tmp->pos < (ft_lstsize(*stack_a) / 2))
-      ra(stack_a);
-    else if (tmp->index == i && tmp->pos >= (ft_lstsize(*stack_a) / 2))
-      rra(stack_a);
-    tmp = tmp->next;
-    if (!tmp)
-      tmp = *stack_a;
-  }
-  if (sort_checker(*stack_a))
-    return (stack_a);
-  pa(stack_a, stack_b);
-  stack_a = three_elems(stack_a);
-  pb(stack_b, stack_a);
-  return (stack_a);
-}
-
-t_list  **five_elems(t_list **stack_a, t_list **stack_b)
-{
-  int       i;
-  t_list    *tmp;
-
-  i = find_small_index(stack_a);
-  *stack_a = new_pos(stack_a);
-  tmp = *stack_a;
-  while (tmp && (*stack_a)->index != i)
-  {
-    if (tmp->index == i && tmp->pos <= (ft_lstsize(*stack_a) / 2))
-      ra(stack_a);
-    else if (tmp->index == i && tmp->pos > (ft_lstsize(*stack_a) / 2))
-      rra(stack_a);
-    tmp = tmp->next;
-    if (!tmp)
-      tmp = *stack_a;
-  }
-  if (sort_checker(*stack_a))
-    return (stack_a);
-  pa(stack_a, stack_b);
-  stack_a = four_elems(stack_a, stack_b);
-  pb(stack_b, stack_a);
-  return (stack_a);
 }

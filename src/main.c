@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 t_list  *ft_new_elem(int num)
 {
@@ -90,19 +90,18 @@ int main(int argc, char **argv)
   // t_list  *tmp = stack_a;
   // while (tmp) 
   // {
-  //   printf("num -> %d | ---> index %d | cost ----> %d\n", tmp->data, tmp->index, tmp->cost);
+  //   printf(" %d |", tmp->data);
   //   if (!tmp->next)
   //     break ;
   //   tmp = tmp->next;
   // }
-  // if (sort_checker(stack_a))
-  //   exit (printf("Todo ordenado") * 0);
-  exit (0);
-}
-
-  // printf("b\n");
+  // printf("\nb\n");
   // while (stack_b) 
   // {
   //   printf("num -> %d ---> index %d ---> pos %d\n", stack_b->data, stack_b->index, stack_b->cost);
   //   stack_b = stack_b->next;
   // }
+  // if (sort_checker(stack_a))
+  //   exit (printf("Todo ordenado") * 0);
+  exit (0);
+}
