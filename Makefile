@@ -10,61 +10,51 @@
 #                                                                              #
 # **************************************************************************** #
 
-YELLOW = \033[0;93m
-WHITE = \033[1m
 CLEAR_SCREEN = \x1b[1J \x1b[H
 
-#-----------------------------------VARIABLES----------------------------------#
-
-NAME = push_swap
-
-LIBFT = src/libft/
-LIBFT_A = $(addprefix $(LIBFT), libft.a)
-
-SRC_NAMES = main.c errors.c utils.c fast_sort.c algorithm.c \
+SRCS = main.c errors.c utils.c fast_sort.c algorithm.c \
 			target_cost_dir.c utils_target_cost_dir.c utils_algorithm.c \
 			swap.c push.c rotate.c reverse_rotate.c \
 			lst_utils1.c lst_utils2.c
-SRCS = $(addprefix src/, $(SRC_NAMES))
-OBJS = $(SRCS:%.c=%.o)
-DEPS = $(SRCS:%.c=%.d)
+OBJS	= ${SRCS:.c=.o}
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+DEPS	= ${SRCS:.c=.d}
 
-LDFLAGS = -L$(LIBFT) 
+NAME	= push_swap
 
-RM = rm -fr
+LIB		= src/libft/libft.a
 
-#------------------------------------EXECUTE-----------------------------------#
+AR		= ar rcs
 
-all: libft $(NAME)
+RM		 = rm -f
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS)  -Iinc -I$(LIBFT) $(LDFLAGS) $(LIBFT_A) $(SRCS) -o $(NAME)
+CC		 = cc
 
-$(OBJS): %.o: %.c Makefile $(LIBFT_A)
-	$(CC) $(CFLAGS) -Iinc -I$(LIBFT) -MMD -c -o $@ $<
-	echo -n "$(CLEAR_SCREEN)"
+CFLAGS	= -Wall -Wextra -Werror -g
 
-libft:
-	make -C $(LIBFT) --no-print-directory
+all:		${NAME}
 
-#-------------------------------------CLEAN------------------------------------#
+%.o:		src/%.c Makefile
+				${CC} ${CFLAGS} -c $< -MMD
+
+${NAME}:	${OBJS}
+				make -C src/libft
+				${CC} ${CFLAGS} ${OBJS} ${LIB} -o ${NAME}
+				echo -n "$(CLEAR_SCREEN)"
 
 clean:
-	$(RM) $(OBJS) $(DEPS) --no-print-directory
-	make clean -C $(LIBFT) --no-print-directory
-	rm -fr push_swap.dSYM --no-print-directory
-	rm -fr .DS_Store --no-print-directory
+				make clean -C src/libft
+				${RM} ${OBJS} ${DEPS} ${BDEPS}
+				echo -n "$(CLEAR_SCREEN)"
 
-fclean: clean
-	$(RM) $(NAME) --no-print-directory
-	make fclean -C $(LIBFT) --no-print-directory
+fclean:		clean
+				make fclean -C src/libft 
+				${RM} ${NAME}
+				echo -n "$(CLEAR_SCREEN)"
 
-re: fclean all
+re:			fclean all
 
--include $(DEPS)
+-include ${DEPS}
 
-.PHONY: all clean fclean re libft
+.PHONY:		clean fclean re all bonus
 .SILENT:
