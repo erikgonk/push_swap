@@ -50,27 +50,36 @@ void  give_cost(t_list **s, int top)
 
 void  give_extra_cost(t_list **stack_a, t_list **stack_b)
 {
-  t_list    *a;
   t_list    *b;
-  t_list    *tmp;
+  t_list    *a;
 
-  a = *stack_a;
   b = *stack_b;
   while (b)
   {
-    tmp = find_data(stack_a, b->target);
-    if (tmp->dir == BOTH && b->dir == BOTH)
+    a = find_data(stack_a, b->target);
+    if (a->dir == BOTH && b->dir == BOTH)
     {
-      if (tmp->cost > b->cost)
-        b->cost = tmp->cost;   
+      if (a->cost > b->cost)
+        b->cost = a->cost;   
+    }
+    else if (a->dir == DOWN && b->dir == DOWN)
+    {
+      if (a->cost > b->cost)
+        b->cost = a->cost;
+    }
+    else if (a->dir == UP && b->dir == UP)
+    {
+      if (a->cost > b->cost)
+        b->cost = a->cost;
     }
     else if (b->pos == 0)
-      b->cost = tmp->cost;
-    else if (b->dir == BOTH && b->cost < tmp->cost)
-      b->cost = tmp->cost;
+      b->cost = a->cost;
+    else if (b->dir == BOTH && b->cost < a->cost)
+      b->cost = a->cost;
+    else if (a->dir == BOTH && b->cost < a->cost)
+      b->cost = a->cost;
     else
-      b->cost += tmp->cost;
-      
+      b->cost += a->cost;
     b = b->next;
   }
 }

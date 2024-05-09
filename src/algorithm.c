@@ -19,7 +19,7 @@ void printlist(t_list **stack_a, t_list **stack_b, int z)
   palprintf = *stack_a;
   while (palprintf) 
   {
-    printf("%d [%d][%d]", palprintf->data, palprintf->cost, palprintf->target);
+    printf("%d [%d][%d] [%d]", palprintf->data, palprintf->cost, palprintf->target, palprintf->dir);
     if (palprintf->next)
       printf(" | ");
     palprintf = palprintf->next;
@@ -53,6 +53,8 @@ void  bring_a_up(t_list **stack_a, t_list **stack_b, t_list *a, t_list *b)
 {
   new_pos(stack_a);
   new_pos(stack_b);
+  if (!stack_a)
+    return ;
   while (a->pos != 0)
   {
     if (b->dir == BOTH && a->dir == UP && b->pos != 0)
@@ -87,7 +89,7 @@ void  push_to_a(t_list **stack_a, t_list **stack_b)
     // printlist(stack_b, stack_b, -1);
     // printf("\n");
     // printf("List a:\n");
-    // printlist(stack_a, stack_b, -1);
+    // printlist(stack_a, stack_a, -1);
     // printf("\n");
     b = find_cheapest(stack_b);
     // printf("b ------------> %d [%d] [%d]\n", b->data, b->target, b->cost);
@@ -95,11 +97,15 @@ void  push_to_a(t_list **stack_a, t_list **stack_b)
     // printf("a ----> %d\n", a->data);
     bring_a_up(stack_a, stack_b, a, b);
     new_pos(stack_b);
+    // usleep(500000);
+    give_dir(stack_a, stack_b);
     while (b->pos != 0)
     {
-      if (a->pos <= UP)
+      if (b->dir == UP)
         rb(stack_b);
-      else if (a->pos > DOWN)
+      else if (b->dir == DOWN)
+        rrb(stack_b);
+      else if (b->dir == BOTH)
         rrb(stack_b);
       new_pos(stack_b);
     }
