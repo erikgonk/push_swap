@@ -6,7 +6,7 @@
 #    By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/12 11:21:29 by erigonza          #+#    #+#              #
-#    Updated: 2024/04/29 14:27:20 by erigonza         ###   ########.fr        #
+r    Updated: 2024/05/09 18:55:33 by erigonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,11 +34,13 @@ CFLAGS	= -Wall -Wextra -Werror -g -fsanitize=address
 
 all:		${NAME}
 
-%.o:		src/%.c Makefile
+libft:
+				make -C src/libft
+				
+%.o:		src/%.c Makefile libft
 				${CC} ${CFLAGS} -c $< -MMD
 
 ${NAME}:	${OBJS}
-				make -C src/libft
 				${CC} ${CFLAGS} ${OBJS} ${LIB} -o ${NAME}
 				echo -n "$(CLEAR_SCREEN)"
 
