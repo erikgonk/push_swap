@@ -6,7 +6,7 @@
 /*   By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 13:20:38 by erigonza          #+#    #+#             */
-/*   Updated: 2024/05/09 18:19:20 by erigonza         ###   ########.fr       */
+/*   Updated: 2024/05/10 10:48:16 by erigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	printlist(t_list **stack_a, t_list **stack_b, int z)
 	if (z == -1)
 		return ;
 	printlist(stack_b, stack_a, -1);
-}*/
-
+}
+*/
 void	asign_smallest_median(t_list **s)
 {
 	t_list	*tmp;
@@ -126,9 +126,11 @@ void	finish_it(t_list **s)
 
 void	ft_big_sort(t_list **stack_a, t_list **stack_b)
 {
-	int	med;
+	int			med;
+	t_list		*tmp;
 
 	med = find_media(stack_a);
+	tmp = *stack_a;
 	while (*stack_a)
 	{
 		if (ft_lstsize(*stack_a) == 3)

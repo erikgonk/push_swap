@@ -6,7 +6,7 @@
 /*   By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 13:14:36 by erigonza          #+#    #+#             */
-/*   Updated: 2024/05/09 18:38:54 by erigonza         ###   ########.fr       */
+/*   Updated: 2024/05/10 11:02:24 by erigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ void	give_dir(t_list **stack_a, t_list **stack_b)
 
 t_list	*find_smallest_node(t_list **s)
 {
-	t_list		*tmp;
-	t_list		*tmp2;
-	int			i;
+	t_list	*tmp;
+	t_list	*tmp2;
+	int		i;
 
 	i = -1;
 	tmp = *s;

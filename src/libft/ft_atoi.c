@@ -6,7 +6,7 @@
 /*   By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:06:08 by erigonza          #+#    #+#             */
-/*   Updated: 2024/01/09 16:06:09 by erigonza         ###   ########.fr       */
+/*   Updated: 2024/05/10 11:55:33 by erigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,7 @@ long long int	ft_atoi(const char *str)
 		i++;
 	}
 	res *= sign;
+	if (res > 2147483647 || res < -2147483648)
+		exit((ft_fd_printf(2, "%s", ERROR_LONG_INT) * 0) + 1);
 	return (res);
 }
-//	ft_putnbr(res);
-/*
-int main(void)
-{
-	char *str = "-2147483648";
-	ft_atoi(str);
-	return (0);
-}*/

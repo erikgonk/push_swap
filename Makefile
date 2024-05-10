@@ -6,7 +6,7 @@
 #    By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/12 11:21:29 by erigonza          #+#    #+#              #
-#    Updated: 2024/05/10 11:13:33 by erigonza         ###   ########.fr        #
+#    Updated: 2024/05/10 13:24:35 by erigonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRCS = main.c errors.c utils.c fast_sort.c algorithm.c \
 			target_cost_dir.c utils_target_cost_dir.c utils_algorithm.c \
 			swap.c push.c rotate.c reverse_rotate.c \
 			lst_utils1.c lst_utils2.c
+
 OBJS	= ${SRCS:.c=.o}
 
 DEPS	= ${SRCS:.c=.d}
@@ -30,17 +31,17 @@ RM		 = rm -f
 
 CC		 = cc
 
-CFLAGS	= -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror -g #-fsanitize=address
 
-all:		${NAME}
+all:		libft ${NAME}
 
-libft:
-				make -C src/libft
-				
-%.o:		src/%.c Makefile libft
+libft: 
+			make -C src/libft
+
+%.o:		src/%.c Makefile
 				${CC} ${CFLAGS} -c $< -MMD
 
-${NAME}:	${OBJS}
+${NAME}:	${OBJS} ./inc/push_swap.h
 				${CC} ${CFLAGS} ${OBJS} ${LIB} -o ${NAME}
 				echo -n "$(CLEAR_SCREEN)"
 
@@ -58,5 +59,5 @@ re:			fclean all
 
 -include ${DEPS}
 
-.PHONY:		clean fclean re all bonus
+.PHONY:		clean fclean re all libft
 .SILENT:

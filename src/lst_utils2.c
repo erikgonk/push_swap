@@ -6,7 +6,7 @@
 /*   By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:58:38 by erigonza          #+#    #+#             */
-/*   Updated: 2024/05/09 18:20:05 by erigonza         ###   ########.fr       */
+/*   Updated: 2024/05/10 10:46:26 by erigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ t_list	*ft_lstnew(int content)
 
 int	ft_lstsize(t_list *lst)
 {
-	size_t	i;
-	t_list	*tmp;
+	size_t		i;
+	t_list		*tmp;
 
 	i = 0;
 	tmp = lst;

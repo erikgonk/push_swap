@@ -6,7 +6,7 @@
 /*   By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:11:36 by erigonza          #+#    #+#             */
-/*   Updated: 2024/03/10 16:11:36 by erigonza         ###   ########.fr       */
+/*   Updated: 2024/05/10 12:33:43 by erigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+
+# define ERROR_LONG_INT "Error\n"
 
 // typedef struct s_lst
 // {

@@ -6,7 +6,7 @@
 /*   By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 13:20:59 by erigonza          #+#    #+#             */
-/*   Updated: 2024/05/09 18:22:04 by erigonza         ###   ########.fr       */
+/*   Updated: 2024/05/10 11:03:16 by erigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,8 @@ t_list	*find_cheapest(t_list **s)
 
 int	find_media(t_list **s)
 {
-	t_list	*tmp;
-	int		i;
+	t_list		*tmp;
+	int			i;
 
 	tmp = *s;
 	i = ft_lstsize(tmp) / 2;

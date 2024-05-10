@@ -6,7 +6,7 @@
 /*   By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 17:40:44 by erigonza          #+#    #+#             */
-/*   Updated: 2024/05/09 18:45:47 by erigonza         ###   ########.fr       */
+/*   Updated: 2024/05/10 13:11:08 by erigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ int	create_stack(t_list **stack_a, char **argv)
 	i = 0;
 	while (argv[++i])
 	{
+		if (argv[i][0] == '\0')
+			exit((ft_fd_printf(2, "%s", ERROR_NUM_NOT_VALID) * 0) + 1);
 		ft_num_checker(argv[i]);
 		num = ft_atoi(argv[i]);
 		if (num > 2147483647 || num < -2147483648)
@@ -79,21 +81,18 @@ int	main(int argc, char **argv)
 	t_list	*stack_a;
 	t_list	*stack_b;
 	int		elems;
-	t_list	*tmp;
 
 	stack_a = NULL;
 	stack_b = NULL;
+	if (argc == 1)
+		exit(1);
 	if (argc < 3)
-		exit((ft_fd_printf(2, "%s", ERROR_ARG) * 0) + 1);
+		exit(1);
 	elems = create_stack(&stack_a, argv);
 	ft_elems(elems, &stack_a, &stack_b);
-	tmp = stack_a;
-	while (tmp)
-	{
-		printf("%d\n", tmp->data);
-		tmp = tmp->next;
-	}
-//	if (sort_checker(stack_a))
-//		exit(printf("Todo ordenado") * 0);
 	exit(0);
 }
+/* 
+	if (sort_checker(stack_a))
+		exit (printf("Todo ordenado") * 0);
+*/

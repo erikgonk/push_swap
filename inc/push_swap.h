@@ -6,7 +6,7 @@
 /*   By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 17:31:44 by erigonza          #+#    #+#             */
-/*   Updated: 2024/05/09 18:40:20 by erigonza         ###   ########.fr       */
+/*   Updated: 2024/05/10 12:41:03 by erigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define ERROR_ARG "\n"
-# define ERROR_CHAR_NOT_VALID "Error\nCharacter Not Valid\n"
-# define ERROR_NUM_NOT_VALID "Error\nNumber Not Valid\n"
-# define ERROR_MALLOC "Error\nMalloc\n"
-# define ERROR_NUM_REPEATED "Error\nNumber Repeated\n"
+# define ERROR_ARG "Error\n"
+# define ERROR_CHAR_NOT_VALID "Error\n"
+# define ERROR_NUM_NOT_VALID "Error\n"
+# define ERROR_MALLOC "Error\n"
+# define ERROR_NUM_REPEATED "Error\n"
 
 # define UP 0
 # define DOWN 1
@@ -81,6 +81,7 @@ void				give_dir(t_list **stack_a, t_list **stack_b);
 t_list				*find_smallest_node(t_list **s);
 t_list				**reset_cost(t_list **s);
 // Target, Cost & Direction
+void				gec(t_list *a, t_list *b);
 void				give_extra_cost(t_list **stack_a, t_list **stack_b);
 void				give_cost(t_list **s, int top);
 void				target_while(t_list *a, t_list *b, t_list **stack_a);
