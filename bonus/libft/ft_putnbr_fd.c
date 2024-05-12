@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/12 18:13:13 by erigonza          #+#    #+#             */
-/*   Updated: 2024/05/12 18:13:14 by erigonza         ###   ########.fr       */
+/*   Created: 2024/01/09 16:08:15 by erigonza          #+#    #+#             */
+/*   Updated: 2024/01/11 14:38:08 by erigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_putnbr_fd(int n, int fd)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
-	int		elems;
+	long long int	i;
 
-	if (argc == 1)
-		exit (0);
-	stack_a = NULL;
-	stack_b = NULL;
-	elems = create_stack(&stack_a, argv);
-	ft_elems(elems, &stack_a, &stack_b);
-	exit(0);
+	i = n;
+	if (i < 0)
+	{
+		i = -i;
+		ft_putchar_fd('-', fd);
+	}
+	if (i > 9)
+	{
+		ft_putnbr_fd(i / 10, fd);
+		ft_putchar_fd((i % 10) + '0', fd);
+	}
+	else
+		ft_putchar_fd(i + '0', fd);
 }
-/* 
-	if (sort_checker(stack_a))
-		exit (printf("Todo ordenado") * 0);
-*/
+/*
+int	main(void)
+{
+	long int		n = -2147483648;
+	ft_putnbr_fd(n, 1);
+	ft_putchar_fd('\n', 1);
+	return 0;
+}*/

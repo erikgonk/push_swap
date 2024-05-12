@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/12 18:13:13 by erigonza          #+#    #+#             */
-/*   Updated: 2024/05/12 18:13:14 by erigonza         ###   ########.fr       */
+/*   Created: 2024/01/09 16:10:12 by erigonza          #+#    #+#             */
+/*   Updated: 2024/04/14 15:02:05 by erigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlen(const char *s)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
-	int		elems;
+	unsigned int	i;
 
-	if (argc == 1)
-		exit (0);
-	stack_a = NULL;
-	stack_b = NULL;
-	elems = create_stack(&stack_a, argv);
-	ft_elems(elems, &stack_a, &stack_b);
-	exit(0);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
-/* 
-	if (sort_checker(stack_a))
-		exit (printf("Todo ordenado") * 0);
-*/

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../inc/push_swap_bonus.h"
 
 t_list	*ft_bft_last(t_list *stack)
 {

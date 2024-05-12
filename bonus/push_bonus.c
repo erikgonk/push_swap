@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/12 18:13:13 by erigonza          #+#    #+#             */
-/*   Updated: 2024/05/12 18:13:14 by erigonza         ###   ########.fr       */
+/*   Created: 2024/04/17 12:46:44 by erigonza          #+#    #+#             */
+/*   Updated: 2024/05/10 10:51:31 by erigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../inc/push_swap_bonus.h"
 
-int	main(int argc, char **argv)
+void	push_bonus(t_list **src, t_list **dst)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
-	int		elems;
+	t_list	*tmp;
 
-	if (argc == 1)
-		exit (0);
-	stack_a = NULL;
-	stack_b = NULL;
-	elems = create_stack(&stack_a, argv);
-	ft_elems(elems, &stack_a, &stack_b);
-	exit(0);
+	if (*src == NULL)
+		return ;
+	tmp = (*src)->next;
+	(*src)->next = *dst;
+	*dst = *src;
+	*src = tmp;
 }
-/* 
-	if (sort_checker(stack_a))
-		exit (printf("Todo ordenado") * 0);
-*/
+
+void	pa_bonus(t_list **stack_a, t_list **stack_b)
+{
+	push_bonus(stack_b, stack_a);
+}
+
+void	pb_bonus(t_list **stack_a, t_list **stack_b)
+{
+	push_bonus(stack_a, stack_b);
+}

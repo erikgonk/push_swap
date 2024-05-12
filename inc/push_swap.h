@@ -6,7 +6,7 @@
 /*   By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 17:31:44 by erigonza          #+#    #+#             */
-/*   Updated: 2024/05/10 12:41:03 by erigonza         ###   ########.fr       */
+/*   Updated: 2024/05/12 17:16:56 by erigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ t_list				*new_pos(t_list **stack_a);
 // Sorting
 void				ft_elems(int elements, t_list **stack_a, t_list **stack_b);
 t_list				**three_elems(t_list **s);
-t_list				**four_elems(t_list **stack_a, t_list **stack_b);
 t_list				**five_elems(t_list **stack_a, t_list **stack_b);
 // Algorithm
 void				asign_smallest_median(t_list **s);
@@ -111,8 +110,32 @@ void				ft_lstdelone(t_list *lst, void (*del)(int));
 void				ft_lstclear(t_list **lst, void (*del)(int));
 void				ft_lstiter(t_list *lst, void (*f)(int));
 void				ft_lstiter(t_list *lst, void (*f)(int));
-
+//
+// BONUS
+// main
+void	make_move(t_list **stack_a, t_list **stack_b);
+// Utils Checker
+int	rev_rotating(char *move, t_list **s, t_list **s_b);
+int	rotating(char *move, t_list **s, t_list **s_b);
+int	pushing(char *move, t_list **s, t_list **s_b);
+int	swapping(char *move, t_list **s, t_list **s_b);
+void	finishing(t_list **stack_a, t_list **stack_b);
+// SWAP_BONUS
+void				sa_bonus(t_list **stack_a);
+void				sb_bonus(t_list **stack_b);
+void				ss_bonus(t_list **stack_a, t_list **stack_b);
+// PUSH_BONUS
+void				pa_bonus(t_list **stack_a, t_list **stack_b);
+void				pb_bonus(t_list **stack_b, t_list **stack_a);
+// ROTATE_BONUS
+void				ra_bonus(t_list **stack);
+void				rb_bonus(t_list **stack);
+void				rr_bonus(t_list **stack_a, t_list **stack_b);
+// REVERSE_ROTATE_BONUS
+void				rra_bonus(t_list **stack);
+void				rrb_bonus(t_list **stack);
+void				rrr_bonus(t_list **stack, t_list **stack_b);
 // PARA COMENTAR
-void				printlist(t_list **stack_a, t_list **stack_b, int z);
+//void				printlist(t_list **stack_a, t_list **stack_b, int z);
 
 #endif

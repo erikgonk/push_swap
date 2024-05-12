@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../inc/push_swap_bonus.h"
 
-void	rotate(t_list **stack)
+void	rotate_bonus(t_list **stack)
 {
 	t_list	*last;
 	t_list	*head;
@@ -28,21 +28,18 @@ void	rotate(t_list **stack)
 	*stack = second;
 }
 
-void	ra(t_list **stack)
+void	ra_bonus(t_list **stack)
 {
-	rotate(stack);
-	write(1, "ra\n", 3);
+	rotate_bonus(stack);
 }
 
-void	rb(t_list **stack)
+void	rb_bonus(t_list **stack)
 {
-	rotate(stack);
-	write(1, "rb\n", 3);
+	rotate_bonus(stack);
 }
 
-void	rr(t_list **stack_a, t_list **stack_b)
+void	rr_bonus(t_list **stack_a, t_list **stack_b)
 {
-	rotate(stack_a);
-	rotate(stack_b);
-	write(1, "rr\n", 3);
+	rotate_bonus(stack_a);
+	rotate_bonus(stack_b);
 }

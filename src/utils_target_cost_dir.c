@@ -67,25 +67,16 @@ t_list	*find_smallest_node(t_list **s)
 {
 	t_list	*tmp;
 	t_list	*tmp2;
-	int		i;
 
-	i = -1;
 	tmp = *s;
+	tmp2 = *s;
 	while (tmp)
 	{
-		i = -1;
-		tmp2 = *s;
-		while (tmp2 && ++i)
-		{
-			if (tmp->index == i)
-				return (tmp);
-			tmp2 = tmp2->next;
-		}
-		if (!tmp->next)
-			return (tmp);
+		if (tmp->data <= tmp2->data)
+			tmp2 = tmp;
 		tmp = tmp->next;
 	}
-	return (tmp);
+	return (tmp2);
 }
 
 t_list	**reset_cost(t_list **s)

@@ -37,25 +37,16 @@ int	find_smallest_num(t_list **s)
 {
 	t_list	*tmp;
 	t_list	*tmp2;
-	int		i;
 
-	i = 0;
 	tmp = *s;
+	tmp2 = *s;
 	while (tmp)
 	{
-		tmp2 = *s;
-		while (tmp2)
-		{
-			if (tmp2->index == i)
-				return (tmp2->data);
-			tmp2 = tmp2->next;
-		}
-		if (!tmp->next)
-			return (tmp->data);
+		if (tmp->data <= tmp2->data)
+			tmp2 = tmp;
 		tmp = tmp->next;
-		i++;
 	}
-	return (tmp->data);
+	return (tmp2->data);
 }
 
 t_list	*find_data(t_list **s, int data)
@@ -78,25 +69,16 @@ t_list	*find_cheapest(t_list **s)
 {
 	t_list	*tmp;
 	t_list	*tmp2;
-	int		i;
 
 	tmp = *s;
-	i = 0;
+	tmp2 = *s;
 	while (tmp)
 	{
-		tmp2 = *s;
-		while (tmp2)
-		{
-			if (tmp2->cost == i)
-				return (tmp2);
-			tmp2 = tmp2->next;
-		}
-		if (!tmp->next)
-			return (tmp);
-		i++;
+		if (tmp->cost <= tmp2->cost)
+			tmp2 = tmp;
 		tmp = tmp->next;
 	}
-	return (tmp);
+	return (tmp2);
 }
 
 int	find_media(t_list **s)

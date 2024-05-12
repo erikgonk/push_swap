@@ -1,48 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 12:47:20 by erigonza          #+#    #+#             */
-/*   Updated: 2024/05/10 10:52:02 by erigonza         ###   ########.fr       */
+/*   Created: 2024/04/17 12:47:44 by erigonza          #+#    #+#             */
+/*   Updated: 2024/05/10 10:52:22 by erigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../inc/push_swap_bonus.h"
 
-void	rotate(t_list **stack)
+void	reverse_rotate_bonus(t_list **stack)
 {
+	t_list	*first;
+	t_list	*bfr_last;
 	t_list	*last;
-	t_list	*head;
-	t_list	*second;
 
-	if (ft_lstsize(*stack) < 2)
+	if (!*stack)
 		return ;
-	head = *stack;
-	second = (*stack)->next;
+	first = *stack;
+	bfr_last = ft_bft_last(*stack);
 	last = ft_lstlast(*stack);
-	last->next = head;
-	head->next = NULL;
-	*stack = second;
+	*stack = last;
+	(*stack)->next = first;
+	bfr_last->next = NULL;
 }
 
-void	ra(t_list **stack)
+void	rra_bonus(t_list **stack)
 {
-	rotate(stack);
-	write(1, "ra\n", 3);
+	reverse_rotate_bonus(stack);
 }
 
-void	rb(t_list **stack)
+void	rrb_bonus(t_list **stack)
 {
-	rotate(stack);
-	write(1, "rb\n", 3);
+	reverse_rotate_bonus(stack);
 }
 
-void	rr(t_list **stack_a, t_list **stack_b)
+void	rrr_bonus(t_list **stack_a, t_list **stack_b)
 {
-	rotate(stack_a);
-	rotate(stack_b);
-	write(1, "rr\n", 3);
+	reverse_rotate_bonus(stack_a);
+	reverse_rotate_bonus(stack_b);
 }
