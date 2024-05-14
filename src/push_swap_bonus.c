@@ -5,28 +5,44 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/12 18:13:13 by erigonza          #+#    #+#             */
-/*   Updated: 2024/05/12 18:13:14 by erigonza         ###   ########.fr       */
+/*   Created: 2024/05/12 18:15:11 by erigonza          #+#    #+#             */
+/*   Updated: 2024/05/14 16:44:04 by erigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../inc/push_swap_bonus.h"
+
+void	make_move(t_list **stack_a, t_list **stack_b)
+{
+	char	*move;
+
+	move = get_next_line(0);
+	if (!move)
+		finishing(stack_a, stack_b);
+	if (swapping(move, stack_a, stack_b))
+		free(move);
+	else if (pushing(move, stack_a, stack_b))
+		free(move);
+	else if (rotating(move, stack_a, stack_b))
+		free(move);
+	else if (rev_rotating(move, stack_a, stack_b))
+		free(move);
+	else
+	{
+		free(move);
+		exit((ft_fd_printf(2, "%s", ERROR_CHECKER_NOT_MOVE) * 0) + 1);
+	}
+}
 
 int	main(int argc, char **argv)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
-	int		elems;
+	t_list		*stack_a;
+	t_list		*stack_b;
 
 	if (argc == 1)
-		exit (0);
-	stack_a = NULL;
-	stack_b = NULL;
-	elems = create_stack(&stack_a, argv);
-	ft_elems(elems, &stack_a, &stack_b);
+		exit(0);
+	create_stack(&stack_a, argv);
+	while (42 > -42)
+		make_move(&stack_a, &stack_b);
 	exit(0);
 }
-/* 
-	if (sort_checker(stack_a))
-		exit (printf("Todo ordenado") * 0);
-*/

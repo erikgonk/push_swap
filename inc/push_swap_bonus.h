@@ -6,12 +6,12 @@
 /*   By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 19:53:51 by erigonza          #+#    #+#             */
-/*   Updated: 2024/05/12 19:58:32 by erigonza         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:11:52 by erigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
 
 # include "../src/libft/libft.h"
 # include <fcntl.h>
@@ -41,7 +41,7 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 // Main
-void	make_move(t_list **stack_a, t_list **stack_b);
+void				make_move(t_list **stack_a, t_list **stack_b);
 // Utils Checker
 int					rev_rotating(char *move, t_list **s, t_list **s_b);
 int					rotating(char *move, t_list **s, t_list **s_b);

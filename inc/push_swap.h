@@ -6,7 +6,7 @@
 /*   By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 17:31:44 by erigonza          #+#    #+#             */
-/*   Updated: 2024/05/12 17:16:56 by erigonza         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:12:23 by erigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,13 +113,13 @@ void				ft_lstiter(t_list *lst, void (*f)(int));
 //
 // BONUS
 // main
-void	make_move(t_list **stack_a, t_list **stack_b);
+void				make_move(t_list **stack_a, t_list **stack_b);
 // Utils Checker
-int	rev_rotating(char *move, t_list **s, t_list **s_b);
-int	rotating(char *move, t_list **s, t_list **s_b);
-int	pushing(char *move, t_list **s, t_list **s_b);
-int	swapping(char *move, t_list **s, t_list **s_b);
-void	finishing(t_list **stack_a, t_list **stack_b);
+int					rev_rotating(char *move, t_list **s, t_list **s_b);
+int					rotating(char *move, t_list **s, t_list **s_b);
+int					pushing(char *move, t_list **s, t_list **s_b);
+int					swapping(char *move, t_list **s, t_list **s_b);
+void				finishing(t_list **stack_a, t_list **stack_b);
 // SWAP_BONUS
 void				sa_bonus(t_list **stack_a);
 void				sb_bonus(t_list **stack_b);
@@ -136,6 +136,6 @@ void				rra_bonus(t_list **stack);
 void				rrb_bonus(t_list **stack);
 void				rrr_bonus(t_list **stack, t_list **stack_b);
 // PARA COMENTAR
-//void				printlist(t_list **stack_a, t_list **stack_b, int z);
+// void				printlist(t_list **stack_a, t_list **stack_b, int z);
 
 #endif

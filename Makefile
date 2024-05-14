@@ -12,24 +12,23 @@
 
 CLEAR_SCREEN = \x1b[1J \x1b[H
 
-SRCS = main.c push_swap.c errors.c utils.c fast_sort.c algorithm.c \
+SRCS = push_swap.c errors.c utils.c fast_sort.c algorithm.c \
 			target_cost_dir.c utils_target_cost_dir.c utils_algorithm.c \
 			swap.c push.c rotate.c reverse_rotate.c \
 			lst_utils1.c lst_utils2.c
 DIR_SRC = ./src
 DIR_OBJ = $(DIR_SRC)/obj
-OBJ = $(addprefix $(DIR_OBJ)/, $(SRC:.c=.o))
-DEP = $(addprefix $(DIR_OBJ)/, $(SRC:.c=.d))
+OBJS = $(addprefix $(DIR_OBJ)/, $(SRCS:.c=.o))
+DEPS = $(addprefix $(DIR_OBJ)/, $(SRCS:.c=.d))
 NAME	= push_swap
 
 SRCS_B = push_swap_bonus.c utils_push_swap_bonus.c \
 			errors_bonus.c lst_utils1_bonus.c lst_utils2_bonus.c \
 			utils_1_bonus.c utils_2_bonus.c \
 			swap_bonus.c push_bonus.c rotate_bonus.c reverse_rotate_bonus.c
-DIR_SRC_B = ./bonus
-DIR_OBJ_B = $(DIR_SRCS_B)/obj
-OBJ_B = $(addprefix $(DIR_OBJ_B)/, $(SRCS_B:.c=.o))
-DEP_B = $(addprefix $(DIR_OBJ_B)/, $(SRCS_B:.c=.d))
+DIR_OBJ_B = $(DIR_SRC)/obj
+OBJS_B = $(addprefix $(DIR_OBJ_B)/, $(SRCS_B:.c=.o))
+DEPS_B = $(addprefix $(DIR_OBJ_B)/, $(SRCS_B:.c=.d))
 NAME_B = checker
 
 LIB		= src/libft/libft.a
@@ -45,19 +44,21 @@ CC = gcc
 all:		libft ${NAME}
 
 libft: 
-			make -C src/libft
+				make -C src/libft
+				mkdir -p $(DIR_OBJ)
 
-%.o:		%.c Makefile
-				${CC} ${CFLAGS} -c $< -MMD
+$(DIR_OBJ)/%.o:		$(DIR_SRC)/%.c Makefile
+				$(CC) -MMD $(FLAGS)  -c $< -o $@ $(INCLUDES)
 
 ${NAME}:	${OBJS} ./inc/push_swap.h
 				${CC} ${CFLAGS} ${OBJS} ${LIB} -o ${NAME}
 				echo -n "$(CLEAR_SCREEN)"
 
-bonus: ${NAME_B} 
+bonus: libft ${NAME_B}
 
 ${NAME_B}:	${OBJS_B} ./inc/push_swap_bonus.h
 				${CC} ${CFLAGS} ${OBJS_B} ${LIB} -o ${NAME_B}
+				echo -n "$(CLEAR_SCREEN)"
 
 clean:
 				make clean -C src/libft
@@ -66,7 +67,7 @@ clean:
 
 fclean:		clean
 				make fclean -C src/libft 
-				${RM} ${NAME} ${NAME_B}
+				${RM} ${NAME} ${NAME_B} ${DIR_OBJ} ${DIR_OBJ_B}
 				echo -n "$(CLEAR_SCREEN)"
 
 re:			fclean all

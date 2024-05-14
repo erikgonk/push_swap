@@ -37,7 +37,6 @@ void	ft_save_numbers(t_list **stack_a, t_list *new)
 	new->index = -1;
 	new->target = -50;
 	new->bol = 0;
-	new->dir = UP;
 	new->median = 0;
 	new->cost = -50;
 	new->pos = ++i;
