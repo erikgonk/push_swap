@@ -6,7 +6,7 @@
 /*   By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 17:40:44 by erigonza          #+#    #+#             */
-/*   Updated: 2024/05/14 19:20:54 by erigonza         ###   ########.fr       */
+/*   Updated: 2024/05/15 18:42:11 by erigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,10 @@ int	swapping(char *move, t_list **s, t_list **s_b)
 	}
 	else if (move[0] == 's' && move[1] == 's' && move[2] == '\n')
 	{
-		if (!*s || !*s_b)
-			return (1);
-		ss_bonus(s, s_b);
+		if (*s)
+			sa_bonus(s);
+		if (*s_b)
+			sb_bonus(s_b);
 		return (1);
 	}
 	return (0);
@@ -57,14 +58,14 @@ int	pushing(char *move, t_list **s, t_list **s_b)
 	{
 		if (!*s)
 			return (1);
-		sa_bonus(s);
+		pa_bonus(s_b, s);
 		return (1);
 	}
 	else if (move[0] == 'p' && move[1] == 'b' && move[2] == '\n')
 	{
 		if (!*s_b)
 			return (1);
-		sb_bonus(s_b);
+		pb_bonus(s_b, s);
 		return (1);
 	}
 	return (0);
@@ -88,8 +89,6 @@ int	rotating(char *move, t_list **s, t_list **s_b)
 	}
 	else if (move[0] == 'r' && move[1] == 'r' && move[2] == '\n')
 	{
-		if (!*s_b || !*s)
-			return (1);
 		rr_bonus(s, s_b);
 		return (1);
 	}
@@ -116,8 +115,6 @@ int	rev_rotating(char *move, t_list **s, t_list **s_b)
 	else if (move[0] == 'r' && move[1] == 'r' && move[2] == 'r'
 		&& move[3] == '\n')
 	{
-		if (!*s_b || !*s)
-			return (1);
 		rrr_bonus(s, s_b);
 		return (1);
 	}
