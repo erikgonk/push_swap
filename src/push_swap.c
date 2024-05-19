@@ -63,13 +63,7 @@ int	create_stack(t_list **stack_a, char **argv)
 		ft_num_checker(argv[i]);
 		num = ft_atoi(argv[i]);
 		if (num > 2147483647 || num < -2147483648)
-		{
-			i = 0;
-			while (argv[i])
-				free(argv[i]);
-			free(argv);
 			exit((ft_fd_printf(2, "%s", ERROR_NUM_NOT_VALID) * 0) + 1);
-		}
 		ft_save_numbers(stack_a, ft_new_elem(num));
 		ft_num_repeated(*stack_a, 0);
 	}
