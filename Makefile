@@ -6,7 +6,7 @@
 #    By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/12 11:21:29 by erigonza          #+#    #+#              #
-#    Updated: 2024/05/15 18:34:18 by erigonza         ###   ########.fr        #
+#    Updated: 2024/05/19 18:32:20 by erigonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ RM		 = rm -fr
 
 CFLAGS	= -Wall -Wextra -Werror -g #-fsanitize=address
 
-CC = gcc
+CC = cc
 
 all:		libft ${NAME}
 
