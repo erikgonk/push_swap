@@ -44,35 +44,37 @@ CC = cc
 all:		libft ${NAME}
 
 libft: 
-				make -C src/libft
-				mkdir -p $(DIR_OBJ)
+				@make -C src/libft
+				@mkdir -p $(DIR_OBJ)
 
 $(DIR_OBJ)/%.o:		$(DIR_SRC)/%.c Makefile
-				$(CC) -MMD $(FLAGS)  -c $< -o $@ $(INCLUDES)
+				@printf "\033[0;33m\r🔨 $< ✅ \033[0m"
+				@$(CC) -MMD $(FLAGS)  -c $< -o $@ $(INCLUDES)
 
 ${NAME}:	${OBJS} ./inc/push_swap.h
-				${CC} ${CFLAGS} ${OBJS} ${LIB} -o ${NAME}
-				echo -n "$(CLEAR_SCREEN)"
+				@${CC} ${CFLAGS} ${OBJS} ${LIB} -o ${NAME}
+				clear
 
 bonus: libft ${NAME_B}
 
 ${NAME_B}:	${OBJS_B} ./inc/push_swap_bonus.h
-				${CC} ${CFLAGS} ${OBJS_B} ${LIB} -o ${NAME_B}
-				echo -n "$(CLEAR_SCREEN)"
+				@printf "\033[0;33m\r🔨 BONUS $< ✅ \033[0m"
+				@${CC} ${CFLAGS} ${OBJS_B} ${LIB} -o ${NAME_B}
+				clear
 
 clean:
-				make clean -C src/libft
-				${RM} ${OBJS} ${DEPS} ${OBJS_B} ${DEPS_B}
-				echo -n "$(CLEAR_SCREEN)"
+				@make clean -C src/libft
+				@${RM} ${OBJS} ${DEPS} ${OBJS_B} ${DEPS_B}
+				clear
 
 fclean:		clean
-				make fclean -C src/libft 
-				${RM} ${NAME} ${NAME_B} ${DIR_OBJ} ${DIR_OBJ_B}
-				echo -n "$(CLEAR_SCREEN)"
+				@make fclean -C src/libft 
+				@${RM} ${NAME} ${NAME_B} ${DIR_OBJ} ${DIR_OBJ_B}
+				clear
 
 re:			fclean all
 
 -include ${DEPS} ${DEPS_B}
 
 .PHONY:		clean fclean re all libft bonus
-#.SILENT:
+.SILENT:

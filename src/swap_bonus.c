@@ -25,20 +25,22 @@ void	swap_bonus(t_list **stack)
 
 void	sa_bonus(t_list **stack_a)
 {
-	if (!(*stack_a || (*stack_a)->next))
+	if (!*stack_a || !(*stack_a)->next)
 		return ;
 	swap_bonus(stack_a);
 }
 
 void	sb_bonus(t_list **stack_b)
 {
-	if (!(*stack_b || (*stack_b)->next))
+	if (!*stack_b || !(*stack_b)->next)
 		return ;
 	swap_bonus(stack_b);
 }
 
 void	ss_bonus(t_list **stack_a, t_list **stack_b)
 {
-	swap_bonus(stack_a);
-	swap_bonus(stack_b);
+	if (*stack_a && (*stack_a)->next)
+		swap_bonus(stack_a);
+	if (*stack_b && (*stack_b)->next)
+		swap_bonus(stack_b);
 }

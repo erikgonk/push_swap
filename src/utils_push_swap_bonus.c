@@ -56,14 +56,14 @@ int	pushing(char *move, t_list **s, t_list **s_b)
 {
 	if (move[0] == 'p' && move[1] == 'a' && move[2] == '\n')
 	{
-		if (!*s)
+		if (!*s_b)
 			return (1);
-		pa_bonus(s_b, s);
+		pa_bonus(s, s_b);
 		return (1);
 	}
 	else if (move[0] == 'p' && move[1] == 'b' && move[2] == '\n')
 	{
-		if (!*s_b)
+		if (!*s)
 			return (1);
 		pb_bonus(s_b, s);
 		return (1);
