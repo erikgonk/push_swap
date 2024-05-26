@@ -65,7 +65,7 @@ int	pushing(char *move, t_list **s, t_list **s_b)
 	{
 		if (!*s)
 			return (1);
-		pb_bonus(s_b, s);
+		pb_bonus(s, s_b);
 		return (1);
 	}
 	return (0);
