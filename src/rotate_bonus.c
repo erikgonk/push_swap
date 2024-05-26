@@ -30,16 +30,22 @@ void	rotate_bonus(t_list **stack)
 
 void	ra_bonus(t_list **stack)
 {
+	if (!*stack || !(*stack)->next)
+		return ;
 	rotate_bonus(stack);
 }
 
 void	rb_bonus(t_list **stack)
 {
+	if (!*stack || !(*stack)->next)
+		return ;
 	rotate_bonus(stack);
 }
 
 void	rr_bonus(t_list **stack_a, t_list **stack_b)
 {
-	rotate_bonus(stack_a);
-	rotate_bonus(stack_b);
+	if (*stack_a && (*stack_a)->next)
+		rotate_bonus(stack_a);
+	if (*stack_b && (*stack_b)->next)
+		rotate_bonus(stack_b);
 }

@@ -16,20 +16,6 @@ void	make_move(t_list **stack_a, t_list **stack_b)
 {
 	char	*move;
 
-	t_list *a = *stack_a;
-	t_list *b = *stack_b;
-	printf("A\n");
-	while (a)
-	{
-		printf("%d\n", a->data);
-		a = a->next;
-	}
-	printf("\nB\n");
-	while (b)
-	{
-		printf("%d\n", b->data);
-		b = b->next;
-	}
 	move = get_next_line(0);
 	if (!move)
 		finishing(stack_a, stack_b);
